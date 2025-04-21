@@ -5,7 +5,12 @@ const propTypes = {
   origin: PropTypes.string.isRequired,
   destination: PropTypes.string.isRequired,
   apiKey: PropTypes.string,
-  waypoints: PropTypes.any,
+  waypoints: PropTypes.arrayOf(
+    PropTypes.shape({
+      lat: PropTypes.number.isRequired,
+      lng: PropTypes.number.isRequired,
+    })
+  ),
 
   avoid: PropTypes.string,
   travelMode: PropTypes.oneOf(['driving', 'walking', 'bicycling', 'transit']),

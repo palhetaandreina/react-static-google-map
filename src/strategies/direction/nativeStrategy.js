@@ -1,8 +1,9 @@
 function nativeStrategy(data) {
-  const { origin, destination, travelMode } = data;
+  const { origin, destination, travelMode, waypoints } = data;
 
   let originLocation;
   let destinationLocation;
+  let waypointsLocation;
 
   if (typeof origin === 'object' && origin.lat && origin.lng) {
     originLocation = new google.maps.LatLng(origin);
@@ -16,12 +17,15 @@ function nativeStrategy(data) {
     destinationLocation = destination;
   }
 
+  waypointsLocation = waypoints.map((waypoint) => ({ location: waypoint }));
+
   const DirectionsService = new google.maps.DirectionsService();
   return new Promise((resolve, reject) => {
     DirectionsService.route(
       {
         origin: originLocation,
         destination: destinationLocation,
+        waypoints: waypointsLocation,
         travelMode: travelMode.toUpperCase(),
       },
       (result, status) => {
