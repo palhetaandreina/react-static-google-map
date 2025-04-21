@@ -1,5 +1,5 @@
 {
-  "name": "react-static-google-map",
+  "name": "react-static-google-map-with-waypoints",
   "description": "Reusable react component to load Google Static map images in your react app",
   "version": "0.10.0",
   "main": "dist/react-static-google-map.cjs.js",
